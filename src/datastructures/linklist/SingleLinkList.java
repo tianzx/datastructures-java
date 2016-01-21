@@ -21,11 +21,36 @@ public class SingleLinkList {
 	}
 	
 	public LinkNode find(int id) {
+		LinkNode node = firstNode;
+		while(node.getId()!=id){
+			if(node.getNext()==null){
+				return null;
+			}else{
+				node = node.getNext();
+			}
+		}
 		return null;
 	}
 	
 	public LinkNode remove(int id){
-		return null;
+		LinkNode needDelete =  firstNode;
+		LinkNode previous = firstNode;
+		//search need delete node and its previous node
+		while(needDelete.getId()!=id) {
+			if(needDelete.getNext()==null){
+				return null;
+			}else{
+				previous = needDelete;
+				needDelete = needDelete.getNext();
+			}
+		}
+		//set node relation
+		if(needDelete.equals((firstNode))){
+			firstNode = firstNode.getNext();
+		}else{
+			previous.setNext(needDelete.getNext());
+		}
+		return needDelete;
 	}
 	public void displayList(){
 		
