@@ -29,7 +29,7 @@ public class SingleLinkList {
 				node = node.getNext();
 			}
 		}
-		return null;
+		return node;
 	}
 	
 	public LinkNode remove(int id){
@@ -53,6 +53,25 @@ public class SingleLinkList {
 		return needDelete;
 	}
 	public void displayList(){
+		LinkNode tempNode = firstNode;
+		while(tempNode!=null){
+			tempNode.printLink();
+			tempNode = tempNode.getNext();
+		}
+	}
+	public static void main(String[] args) {
+		SingleLinkList t =  new SingleLinkList();
+		t.insertFirst(1);
+		t.insertFirst(3);
+		t.insertFirst(2);
+		t.insertFirst(15);
+		t.insertFirst(7);
+		t.displayList();
 		
+		LinkNode ret1 = t.find(2);
+		System.err.println(ret1);
+		
+		t.remove(15);
+		t.displayList();
 	}
 }
