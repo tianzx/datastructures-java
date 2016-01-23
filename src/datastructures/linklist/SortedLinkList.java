@@ -73,6 +73,10 @@ public class SortedLinkList {
 		}
 	}
 	
+	public boolean isEmpty() {
+		
+		return firstNode==null;
+	}
 	public static void main(String[] args) {
 		SortedLinkList t =  new SortedLinkList();
 		t.insertFirst(1);
