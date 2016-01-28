@@ -1,5 +1,8 @@
 package datastructures.binarytree;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * show huffman compress decompress
  * @author tianzx
@@ -7,16 +10,31 @@ package datastructures.binarytree;
  */
 public class HuffmanTree {
 
-	public String compress(String str) {
+	public void compress(String str) {
 		//1: statistics
-		
+		HuffmanPriorityQueue queue = this.statistics(str);
 		//2: buildTree
-		//3: code
+		HuffmanNode tree = this.buidHuffmanTree(queue);
+		//3: encode,tree left 0,tree right 1
+		Map<String,String> map = new HashMap<String,String>();
+		this.buildHuffmanCode(map,tree,"");
 		//4： output
-		return null;
+		this.outputData(str,map);
 	}
 	
-	private int statistics(String s) {
-		return 0;
+	private void outputData(String str, Map<String, String> map) {
+		
+	}
+
+	private void buildHuffmanCode(Map<String, String> map, HuffmanNode tree, String string) {
+		
+	}
+
+	private HuffmanNode buidHuffmanTree(HuffmanPriorityQueue queue) {
+		return null;
+	}
+
+	private HuffmanPriorityQueue statistics(String s) {
+		return null;
 	}
 }
