@@ -80,7 +80,7 @@ public class BinaryTree {
 	public void inOrder(Node node ){
 		if(node!=null){
 			inOrder(node.getLeftChild());
-			System.err.print(node.getId()+",");
+			System.err.print(node.getId()+",") ;
 			inOrder(node.getRightChild());
 		}
 	}
