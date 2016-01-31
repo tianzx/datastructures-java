@@ -17,6 +17,65 @@ import java.util.Map;
  */
 public class HuffmanTree {
 
+	public String decompress(String fileName){
+		DataInputStream in = null;
+		int[] dataInts  = null;
+		byte[] datas = null;
+		try {
+			//1: construct encode table
+			Map<String,String> map = readCodes(in);
+			//2: concrete data
+			 datas= this.readDatas(in);
+			//3: read byte convert to int
+			dataInts = this.byte2IntArray(datas);
+			//4: successive reduction
+			String srcContent = this.huffman2Char(map, dataInts);
+		}catch(Exception e){
+			try {
+				in = new DataInputStream(new FileInputStream(new File(fileName)));
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}finally{
+				try {
+					in.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}
+		
+		
+		return ""; 
+	}
+	private String huffman2Char(Map<String,String> map,int[] dataInts){
+		return "";
+	}
+	private int[] byte2IntArray(byte[] datas) {
+		
+		return null;
+	}
+	private byte[] readDatas(DataInputStream in){
+		return null;
+	}
+	private Map<String,String> readCodes(DataInputStream in) throws IOException{
+		Map<String,String> map = new HashMap<String,String>();
+		//1:read encode num
+		int codeNum = in.readInt();
+		//2:
+		for(int i=0;i<codeNum;i++){
+			char codeChar = in.readChar();
+			int codeLen = in.readInt();
+			String code = "";
+			char[] cs = new char[codeLen];
+			for(int j=0;j<cs.length;j++){
+				code += in.readChar();
+			}
+			map.put(code, ""+codeChar);
+		}
+		return map;
+	}
 	public void compress(String str,String outFile) {
 		//1: statistics
 		HuffmanPriorityQueue queue = this.statistics(str);
