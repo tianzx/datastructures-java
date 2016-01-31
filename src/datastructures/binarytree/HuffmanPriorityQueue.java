@@ -8,6 +8,9 @@ public class HuffmanPriorityQueue {
 
 	private int length;
 	
+	public int size() {
+		return this.nItems;
+	}
 	public HuffmanPriorityQueue(int length) {
 		this.length = length;
 		queue = new HuffmanNode[length];
