@@ -54,10 +54,68 @@ public class RBTree {
 	}
 	
 	private void rightRotate(RBNode node){
+		RBNode oldLeftChild = node.getLeftChild();
+		RBNode oldLeftRightChild = null;
 		
+		if(oldLeftChild !=null){
+			oldLeftRightChild = oldLeftChild.getRightChild();
+		}
+		
+		if(node.getParent()!=null){
+			boolean isLeftChild = (node.getParent().getLeftChild()==node);
+			if(isLeftChild){
+				node.getParent().setLeftChild(oldLeftChild);
+			}else {
+				node.getParent().setRightChild(oldLeftChild);
+			}
+			if(oldLeftChild!=null){
+				oldLeftChild.setParent(node.getParent());
+			}
+		}else{
+			oldLeftChild.setParent(null);
+			oldLeftChild.setRed(false);
+			root = oldLeftChild;
+		}
+		if(oldLeftChild!=null){
+			oldLeftChild.setRightChild(node);
+		}
+		node.setParent(oldLeftChild);
+		
+		node.setLeftChild(oldLeftRightChild);
+		if(oldLeftRightChild!=null){
+			oldLeftRightChild.setParent(node);
+		}
 	}
 	private void leftRotate(RBNode node){
+		RBNode oldRightChild = node.getRightChild();
+		RBNode oldRightLeftChild = null;
+		if(oldRightChild!=null){
+			oldRightLeftChild = oldRightChild.getLeftChild();
+		}
+		if(node.getParent()!=null){
+			boolean isLeftChild = (node.getParent().getLeftChild()==node);
+			if(isLeftChild){
+				node.getParent().setLeftChild(oldRightChild);
+			}else {
+				node.getParent().setRightChild(oldRightChild);
+			}
+			if(oldRightChild!=null){
+				oldRightChild.setParent(node.getParent());
+			}
+		}else{
+			oldRightChild.setParent(null);
+			oldRightChild.setRed(false);
+			root = oldRightChild;
+		}
+		if(oldRightChild!=null){
+			oldRightChild.setRightChild(node);
+		}
+		node.setParent(oldRightChild);
 		
+		node.setLeftChild(oldRightLeftChild);
+		if(oldRightLeftChild!=null){
+			oldRightLeftChild.setParent(node);
+		}
 	}
 	/**********************************************************/
 	/**
