@@ -8,6 +8,10 @@ public class KeyItem {
 	private int id;
 	private int businessData;
 	
+	public KeyItem(int id) {
+		super();
+		this.id = id;
+	}
 	/**
 	 * @return the id
 	 */

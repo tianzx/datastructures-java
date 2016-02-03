@@ -37,6 +37,39 @@ public class Tree234 {
 	 * @param id
 	 */
 	public void insert(int id) {
+		Node234 current = root;
+		KeyItem newItem =  new KeyItem(id);
 		
+		while(true) {
+			if(current.isFull()) {
+				//if it is full
+				//1: node division
+				
+				//2: search current
+				//2.1: get current parent,because node divised
+				//2.2: again search new node
+				current = this.getNext(current.getParent(), id);
+			}else {
+				if(current.isLeaf()) {
+					break;
+				}else {
+					current = this.getNext(current, id);
+				}
+			}
+		}
+		current.insertKeyItem(newItem);
+	}
+	/**
+	 * split node 
+	 * @param node
+	 */
+	private void splitNode(Node234 node) {
+		KeyItem key2,key3;
+		Node234 parent,child3,child4;
+		key3 = node.removeKeyItem();
+		key2 = node.removeKeyItem();
+		
+		child3 = node.disConnectChild(2);
+		child3 = node.disConnectChild(3);
 	}
 }
