@@ -25,6 +25,12 @@ public class ThreadPool {
 	
 	public void processTask(Task task){
 		SimpleThread thread = getIdleThread();
+		if(null!=thread){
+			thread.setArgument(task);
+			thread.setRunningFlag(true);
+		}else{
+			System.err.println("no active thread...");
+		}
 	}
 
 	private synchronized SimpleThread getIdleThread() {

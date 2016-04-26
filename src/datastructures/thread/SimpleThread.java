@@ -28,7 +28,14 @@ public class SimpleThread extends Thread {
 		}
 	}
 
-	private synchronized void setRunningFlag(boolean flag) {
+	/**
+	 * @return the runningFlag
+	 */
+	public boolean isRunningFlag() {
+		return runningFlag;
+	}
+
+	synchronized void setRunningFlag(boolean flag) {
 		this.runningFlag = flag;
 		if (runningFlag) {
 			this.notify();
